@@ -6,9 +6,5 @@ import { Commands } from './commands';
 //この方法は、拡張機能がアクティブ化されたときに呼び出されます
 //拡張機能がアクティブ化されますコマンドが最初に実行されたとき
 export function activate(context: vscode.ExtensionContext) {
-	let disposable = vscode.commands.registerCommand(Commands.VerticalWriting, () => {
-		vscode.window.showInformationMessage('Hello World from zircon-lang-editor!' + vscode.extensions.getExtension.name);
-	});
-
-	context.subscriptions.push(disposable);
+	
 }

@@ -14,10 +14,24 @@
   "contributes": {
     "commands": [
       {
-        "command": "zircon-lang-editor.helloWorld",
-        "title": "Hello World"
+        "command": "zircon-lang-editor.verticalWriting",
+        "title": "zircon-lang-editorを有効化",
+        "icon": {
+          "dark": "/public/image/icon/normal.svg",
+          "light": "/public/image/icon/normal.svg",
+          "in_progress": "/public/image/icon/in_progress.svg"
+        }
       }
-    ]
+    ],
+     "menus": {
+      "editor/title": [
+        {
+          "when": "true",
+          "command": "zircon-lang-editor.verticalWriting",
+          "group": "navigation"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

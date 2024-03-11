@@ -7,8 +7,19 @@ import { Commands } from './commands';
 //拡張機能がアクティブ化されますコマンドが最初に実行されたとき
 export function activate(context: vscode.ExtensionContext) {
 	let disposable = vscode.commands.registerCommand(Commands.VerticalWriting, () => {
-		vscode.window.showInformationMessage('Hello World from zircon-lang-editor!' + vscode.extensions.getExtension.name);
+		const editor = vscode.window.activeTextEditor;
+		if (editor) {
+			const document = editor.document;
+			const text = document.getText();
+			const verticalText = text.split('').reverse().join('\n');
+			editor.edit(editBuilder => {
+				const fullRange = new vscode.Range(
+					document.positionAt(0),
+					document.positionAt(text.length)
+				);
+				editBuilder.replace(fullRange, verticalText);
+			});
+		}
 	});
-
 	context.subscriptions.push(disposable);
 }
