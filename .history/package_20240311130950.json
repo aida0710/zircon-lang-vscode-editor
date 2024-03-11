@@ -1,0 +1,56 @@
+{
+  "name": "zircon-lang-editor",
+  "displayName": "zircon-lang-editor",
+  "description": "zircon-lang用の縦書きエディター拡張機能",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.87.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:zircon-lang-editor.verticalWriting"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "zircon-lang-editor.verticalWriting",
+        "title": "zircon-lang-editorを有効化",
+        "icon": {
+          "dark": "./img/head.svg",
+          "light": "./img/head.svg"
+        }
+      }
+    ],
+     "menus": {
+      "editor/title": [
+        {
+          "when": "editorLangId == zircon-lang",
+          "command": "famousSaying",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.87.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@typescript-eslint/eslint-plugin": "^7.0.2",
+    "@typescript-eslint/parser": "^7.0.2",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3",
+    "@vscode/test-cli": "^0.0.6",
+    "@vscode/test-electron": "^2.3.9"
+  }
+}
